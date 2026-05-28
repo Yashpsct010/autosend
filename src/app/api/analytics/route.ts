@@ -60,7 +60,7 @@ export async function GET() {
     where: { id: { in: templateIds } },
     select: { id: true, name: true },
   });
-  const templateMap = Object.fromEntries(templates.map((t) => [t.id, t.name]));
+  const templateMap = Object.fromEntries(templates.map((t: any) => [t.id, t.name]));
 
   const topTemplates = templateStats.map((t: any) => ({
     name: t.templateId ? (templateMap[t.templateId] ?? "Unknown") : "No Template",

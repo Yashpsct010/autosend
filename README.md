@@ -42,7 +42,6 @@ DATABASE_URL="your_postgresql_connection_string"
 
 # NextAuth
 NEXTAUTH_SECRET="your_nextauth_secret_key"
-NEXTAUTH_URL="http://localhost:3000"
 
 # Google OAuth
 GOOGLE_CLIENT_ID="your_google_oauth_client_id"

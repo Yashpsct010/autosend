@@ -102,11 +102,6 @@ export default function SettingsPage() {
       key: "GOOGLE_CLIENT_SECRET",
       hint: "From Google Cloud Console OAuth credentials",
     },
-    {
-      label: "NEXTAUTH_URL",
-      key: "NEXTAUTH_URL",
-      hint: "Base URL of your app e.g. http://localhost:3000",
-    },
   ];
 
   return (

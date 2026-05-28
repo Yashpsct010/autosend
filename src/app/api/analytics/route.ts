@@ -55,14 +55,14 @@ export async function GET() {
   const chartData = Object.entries(dailyMap).map(([date, sent]) => ({ date, sent }));
 
   // Resolve template names
-  const templateIds = templateStats.map((t) => t.templateId).filter(Boolean) as string[];
+  const templateIds = templateStats.map((t: any) => t.templateId).filter(Boolean) as string[];
   const templates = await db.emailTemplate.findMany({
     where: { id: { in: templateIds } },
     select: { id: true, name: true },
   });
   const templateMap = Object.fromEntries(templates.map((t) => [t.id, t.name]));
 
-  const topTemplates = templateStats.map((t) => ({
+  const topTemplates = templateStats.map((t: any) => ({
     name: t.templateId ? (templateMap[t.templateId] ?? "Unknown") : "No Template",
     count: t._count.id,
   }));

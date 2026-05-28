@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
         select: { email: true, firstName: true, lastName: true, company: true, title: true }
       });
       
-      const existingMap = new Map(existingContacts.map((c: any) => [c.email, c]));
+      const existingMap = new Map<string, any>(existingContacts.map((c: any) => [c.email, c]));
       const toInsert = [];
       const toUpdate = [];
 

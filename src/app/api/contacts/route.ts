@@ -49,7 +49,7 @@ export async function GET(request: NextRequest) {
   ]);
 
   const filtered = status
-    ? contacts.filter((c) => c.outreaches[0]?.status === status)
+    ? contacts.filter((c: any) => c.outreaches[0]?.status === status)
     : contacts;
 
   return Response.json({ contacts: filtered, total, page, pageSize });

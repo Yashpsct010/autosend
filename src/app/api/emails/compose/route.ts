@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
     where: { id: { in: contactIds } },
   });
 
-  const previews = contacts.map((contact) => {
+  const previews = contacts.map((contact: any) => {
     const personalizedBody = replaceMergeTags(template.body, {
       FirstName: contact.firstName,
       LastName: contact.lastName,

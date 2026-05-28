@@ -15,21 +15,16 @@ export async function GET(request: NextRequest) {
   const pageSize = parseInt(searchParams.get("pageSize") ?? "50");
   const skip = (page - 1) * pageSize;
 
-  const where = {
-    AND: [
-      search
-        ? {
-            OR: [
-              { email: { contains: search, mode: "insensitive" } },
-              { firstName: { contains: search, mode: "insensitive" } },
-              { lastName: { contains: search, mode: "insensitive" } },
-              { company: { contains: search, mode: "insensitive" } },
-              { title: { contains: search, mode: "insensitive" } },
-            ],
-          }
-        : {},
-    ],
-  };
+  const where: any = {};
+  if (search) {
+    where.OR = [
+      { email: { contains: search, mode: "insensitive" } },
+      { firstName: { contains: search, mode: "insensitive" } },
+      { lastName: { contains: search, mode: "insensitive" } },
+      { company: { contains: search, mode: "insensitive" } },
+      { title: { contains: search, mode: "insensitive" } },
+    ];
+  }
 
   const [contacts, total] = await Promise.all([
     db.contact.findMany({

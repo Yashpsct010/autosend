@@ -262,7 +262,7 @@ export default function ComposePage() {
           ) : previewContacts.length === 0 ? (
             <p className="text-xs text-white/30 text-center py-4">No contacts available for preview</p>
           ) : (
-            previewContacts.map((contact) => {
+            previewContacts.map((contact: any) => {
               const previewSubject = replaceMergeTags(subject, {
                 FirstName: contact.firstName,
                 LastName: contact.lastName,

@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
         select: { email: true, firstName: true, lastName: true, company: true, title: true }
       });
       
-      const existingMap = new Map(existingContacts.map(c => [c.email, c]));
+      const existingMap = new Map(existingContacts.map((c: any) => [c.email, c]));
       const toInsert = [];
       const toUpdate = [];
 
@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
           
           // Using Promise.all instead of $transaction completely bypasses the strict Prisma transaction timeouts
           await Promise.all(
-            chunk.map(data => 
+            chunk.map((data: any) => 
               db.contact.update({
                 where: { email: data.email },
                 data: {
